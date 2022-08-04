@@ -2,6 +2,9 @@ package com.fin.easyfin;
 
 import javafx.scene.paint.Color;
 
+/**
+ * Wrapper class for coloring text in a ListView.
+ */
 public class ColoredText {
     private final String text ;
     private final Color color ;
