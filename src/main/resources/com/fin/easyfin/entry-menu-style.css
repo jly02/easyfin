@@ -1,0 +1,11 @@
+.list-view .list-cell:odd {
+    -fx-background-color:  #363636;
+}
+
+.list-view .list-cell:even {
+    -fx-background-color:  #1f1e1e;
+}
+
+.list-view .list-cell:focused {
+    -fx-background-color: #555555;
+}
