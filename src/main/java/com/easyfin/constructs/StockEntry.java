@@ -34,4 +34,16 @@ public class StockEntry {
     public XYChart.Series<String, Integer> getData() {
         return data;
     }
+
+    /**
+     * Adds a datapoint to this stock entry.
+     *
+     * @param datapoint the data to be added
+     */
+    @SuppressWarnings("unchecked")
+    public void addData(XYChart.Data<String, Integer> datapoint) {
+        if (datapoint != null) {
+            this.data.getData().addAll(datapoint);
+        }
+    }
 }
