@@ -2,17 +2,20 @@
     -fx-background-color: #363636;
 }
 
+/* The actual line itself. */
 .chart-series-line {
     -fx-stroke-width: 3px;
     -fx-effect: null;
 }
 
+/* The line color */
 .default-color0.chart-series-line {
-    -fx-stroke: #0f0f0f;
+    -fx-stroke: #00ad00;
 }
 
+/* The dots on the line */
 .default-color0.chart-line-symbol {
-    -fx-background-color: #0f0f0f, #0f0f0f;
+    -fx-background-color: #00ad00, #262626;
 }
 
 .chart-plot-background {
@@ -38,11 +41,13 @@
    -fx-padding: 20px;
 }
 
-.chart-legend-item{
+/* The legend text */
+.chart-legend-item {
     -fx-text-fill: #c3c3c3;
 }
 
-.chart-legend-item-symbol{
+/* The symbol on the legend */
+.chart-legend-item-symbol {
    -fx-background-radius: 0;
    -fx-stroke: #e9967a;
 }

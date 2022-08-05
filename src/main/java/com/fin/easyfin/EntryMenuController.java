@@ -1,5 +1,6 @@
 package com.fin.easyfin;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
@@ -15,6 +16,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.IntStream;
 
+/**
+ * Handles actions on the screen that shows your personal portfolio.
+ */
 public class EntryMenuController implements Initializable {
     // Color used for text in left list view: 0xbfbfbf
     private static final Color TEXT_GREY = new Color(
@@ -39,8 +43,6 @@ public class EntryMenuController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // stockGraph.setCreateSymbols(false);
-
         IntStream
             .range(0, 20)
             .forEach(i -> stockList.add(new ColoredText("WEQE", TEXT_GREY)));
@@ -77,5 +79,12 @@ public class EntryMenuController implements Initializable {
             String newTitle = stocks.getSelectionModel().getSelectedItem().getText();
             graphTitle.setText(newTitle);
         });
+    }
+
+    /**
+     * Switch to the account screen.
+     */
+    protected void toAccountScreen(ActionEvent event) {
+
     }
 }
