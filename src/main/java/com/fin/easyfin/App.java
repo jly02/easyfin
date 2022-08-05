@@ -14,8 +14,9 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("entry-menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
-        scene.getStylesheets().add(Objects.requireNonNull(App.class
-                .getResource("entry-menu-style.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(
+                App.class.getResource("entry-menu-style.css")).toExternalForm()
+        );
 
         stage.setResizable(false);
         stage.setTitle("Easy-Fin Stocks");

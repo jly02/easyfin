@@ -2,6 +2,8 @@ package com.fin.easyfin;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -14,7 +16,7 @@ import java.util.ResourceBundle;
 import java.util.stream.IntStream;
 
 public class EntryMenuController implements Initializable {
-    // Color used for text in left list view
+    // Color used for text in left list view: 0xbfbfbf
     private static final Color TEXT_GREY = new Color(
             (double) 0xbf / 0x100,
             (double) 0xbf / 0x100,
@@ -22,13 +24,23 @@ public class EntryMenuController implements Initializable {
             1
     );
 
+    private static final String[] MONTHS = {
+            "JAN", "FEB", "MAR",
+            "APR", "MAY", "JUN",
+            "JUL", "AUG", "SEP",
+            "NOV", "OCT", "DEC"
+    };
+
     @FXML private ListView<ColoredText> stocks;
     @FXML private Label graphTitle;
+    @FXML private LineChart<String, Integer> stockGraph;
 
     List<ColoredText> stockList = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // stockGraph.setCreateSymbols(false);
+
         IntStream
             .range(0, 20)
             .forEach(i -> stockList.add(new ColoredText("WEQE", TEXT_GREY)));
@@ -50,6 +62,15 @@ public class EntryMenuController implements Initializable {
                 }
             }
         });
+
+        // Add items to graph
+        XYChart.Series<String, Integer> series = new XYChart.Series<>();
+        series.setName("Stock value over time");
+        IntStream
+                .range(0, 12)
+                .forEach(i -> series.getData().add(new XYChart.Data<>(MONTHS[i], (i + 1) * 4)));
+
+        stockGraph.getData().addAll(series);
 
         // Set graph label text when a different item is picked
         stocks.getSelectionModel().selectedItemProperty().addListener((observableValue, coloredText, t1) -> {
