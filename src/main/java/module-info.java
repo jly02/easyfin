@@ -3,6 +3,10 @@ module com.fin.easyfin {
     requires javafx.fxml;
 
 
-    opens com.fin.easyfin to javafx.fxml;
-    exports com.fin.easyfin;
+    opens com.easyfin to javafx.fxml;
+    exports com.easyfin;
+    exports com.easyfin.controllers;
+    opens com.easyfin.controllers to javafx.fxml;
+    exports com.easyfin.constructs;
+    opens com.easyfin.constructs to javafx.fxml;
 }

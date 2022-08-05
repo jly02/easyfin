@@ -1,4 +1,4 @@
-package com.fin.easyfin;
+package com.easyfin.constructs;
 
 import javafx.scene.chart.XYChart;
 

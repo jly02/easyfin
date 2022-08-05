@@ -1,15 +1,23 @@
-package com.fin.easyfin;
+package com.easyfin.controllers;
 
+import com.easyfin.constructs.ColoredText;
+import com.easyfin.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +49,7 @@ public class EntryMenuController implements Initializable {
 
     List<ColoredText> stockList = new ArrayList<>();
 
+    @SuppressWarnings("unchecked")
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         IntStream
@@ -84,7 +93,13 @@ public class EntryMenuController implements Initializable {
     /**
      * Switch to the account screen.
      */
-    protected void toAccountScreen(ActionEvent event) {
+    public void toAccountScreen(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("account-screen.fxml"));
+        Parent root = loader.load();
 
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
