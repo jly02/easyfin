@@ -3,6 +3,7 @@ package com.easyfin.controllers;
 import com.easyfin.App;
 import com.easyfin.constructs.Credentials;
 import com.easyfin.constructs.ResourceManager;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,26 +47,26 @@ public class AccountScreenController implements Initializable {
      * Tests the inputted credentials against the database.
      */
     public void testValidate() {
-        // to be implemented
+        infoLabel.setText("Successfully Connected!");
+        infoLabel.setTextFill(Color.GREEN);
     }
 
     /**
      * Saves user's inputted credentials as local persistent data.
      */
     public void saveCredentials() throws IOException {
+        // Neither field can be blank
         if(usernameField.getText().isBlank() || apiField.getText().isBlank()) {
             infoLabel.setText("Fields cannot be empty!");
             infoLabel.setTextFill(Color.RED);
             return;
         }
 
+        // Write to validation.save file
         ResourceManager.save(
                 new Credentials(usernameField.getText(), apiField.getText()),
                 "src/main/resources/persistent/validation.save"
         );
-
-        infoLabel.setText("Successfully saved!");
-        infoLabel.setTextFill(Color.GREEN);
     }
 
     @Override

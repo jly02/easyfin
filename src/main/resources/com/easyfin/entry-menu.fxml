@@ -45,7 +45,7 @@
                         <Font name="Bell MT" size="18.0" />
                      </font>
                   </Label>
-                  <LineChart fx:id="stockGraph" layoutX="66.0" layoutY="193.0" prefHeight="450.0" prefWidth="816.0" stylesheets="@graph-style.css">
+                  <LineChart fx:id="stockGraph" layoutX="19.0" layoutY="161.0" legendSide="TOP" prefHeight="514.0" prefWidth="910.0" stylesheets="@graph-style.css">
                     <xAxis>
                       <CategoryAxis label="Month" prefHeight="17.0" prefWidth="759.0" side="BOTTOM" tickLabelFill="#a8a8a8" />
                     </xAxis>

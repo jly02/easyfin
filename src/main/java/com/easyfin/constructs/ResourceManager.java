@@ -1,11 +1,16 @@
 package com.easyfin.constructs;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
  * General resource manager for saving/loading serialized data.
+ * The target class for building a serialized object must
+ * implement java.io.Serializable.
  */
 public class ResourceManager {
     /**

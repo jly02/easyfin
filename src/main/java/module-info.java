@@ -1,6 +1,7 @@
 module com.fin.easyfin {
     requires javafx.controls;
     requires javafx.fxml;
+    requires YahooFinanceAPI;
 
 
     opens com.easyfin to javafx.fxml;
