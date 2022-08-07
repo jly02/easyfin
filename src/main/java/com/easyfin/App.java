@@ -19,8 +19,11 @@ public class App extends Application {
                 App.class.getResource("entry-menu-style.css")).toExternalForm()
         );
 
+        stage.getIcons().add(new Image(Objects.requireNonNull(
+                App.class.getResourceAsStream("/img/icon.png"))
+        ));
+
         stage.setResizable(false);
-        stage.getIcons().add(new Image(App.class.getResourceAsStream("/img/icon.png")));
         stage.setTitle("Easy-Fin Stocks");
         stage.setScene(scene);
         stage.show();
