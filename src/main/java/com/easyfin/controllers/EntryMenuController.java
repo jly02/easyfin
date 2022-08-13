@@ -1,23 +1,17 @@
 package com.easyfin.controllers;
 
 import com.easyfin.constructs.ColoredText;
-import com.easyfin.App;
 
 import com.easyfin.constructs.StockEntry;
 import com.easyfin.helpers.Scenes;
 import com.easyfin.helpers.TextFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.math.BigDecimal;

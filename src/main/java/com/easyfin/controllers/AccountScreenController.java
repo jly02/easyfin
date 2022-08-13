@@ -1,6 +1,5 @@
 package com.easyfin.controllers;
 
-import com.easyfin.App;
 import com.easyfin.constructs.Credentials;
 import com.easyfin.helpers.AccountAPIWrapper;
 import com.easyfin.helpers.ResourceManager;
@@ -8,16 +7,11 @@ import com.easyfin.helpers.ResourceManager;
 import com.easyfin.helpers.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 import java.awt.Desktop;
 import java.io.IOException;
