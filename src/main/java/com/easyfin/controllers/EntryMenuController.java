@@ -4,6 +4,7 @@ import com.easyfin.constructs.ColoredText;
 import com.easyfin.App;
 
 import com.easyfin.constructs.StockEntry;
+import com.easyfin.helpers.Scenes;
 import com.easyfin.helpers.TextFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -106,12 +107,13 @@ public class EntryMenuController implements Initializable {
      * Switch to the account screen.
      */
     public void toAccountScreen(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("account-screen.fxml"));
-        Parent root = loader.load();
+        Scenes.toAccountScreen(event);
+    }
 
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    /**
+     * Switch to stock adding screen.
+     */
+    public void toStockScreen(ActionEvent event) throws IOException {
+        Scenes.toStockScreen(event);
     }
 }

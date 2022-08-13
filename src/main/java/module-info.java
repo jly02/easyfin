@@ -4,6 +4,7 @@ module com.fin.easyfin {
     requires YahooFinanceAPI;
     requires java.net.http;
     requires com.google.gson;
+    requires java.desktop;
 
 
     opens com.easyfin to javafx.fxml;

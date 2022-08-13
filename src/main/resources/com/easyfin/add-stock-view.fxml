@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1280.0" style="-fx-background-color: #363636;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.easyfin.controllers.EntryMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1280.0" style="-fx-background-color: #363636;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.easyfin.controllers.AddStockController">
    <children>
       <BorderPane prefHeight="760.0" prefWidth="1280.0">
          <top>
@@ -21,7 +17,7 @@
                         <Font name="Bell MT" size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="1152.0" layoutY="9.0" mnemonicParsing="false" style="-fx-background-color: #3d3d3d;" text="Your Stocks" textFill="#c3c3c3">
+                  <Button layoutX="1152.0" layoutY="9.0" mnemonicParsing="false" onAction="#toMainScreen" style="-fx-background-color: #3d3d3d;" text="Your Stocks" textFill="#c3c3c3">
                      <font>
                         <Font name="Bell MT" size="18.0" />
                      </font>
@@ -31,7 +27,7 @@
                         <Font name="Bell MT" size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="950.0" layoutY="9.0" mnemonicParsing="false" onAction="#toStockScreen" style="-fx-background-color: #3d3d3d;" text="Add Stock" textFill="#c3c3c3">
+                  <Button layoutX="949.0" layoutY="9.0" mnemonicParsing="false" style="-fx-background-color: #3d3d3d;" text="Add Stock" textFill="#c3c3c3">
                      <font>
                         <Font name="Bell MT" size="18.0" />
                      </font>
@@ -39,28 +35,20 @@
                </children>
             </AnchorPane>
          </top>
-         <left>
-            <ListView fx:id="stocks" fixedCellSize="40.0" prefHeight="706.0" prefWidth="333.0" style="-fx-background-color: #363636;" stylesheets="@entry-menu-style.css" BorderPane.alignment="CENTER" />
-         </left>
          <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="graphTitle" layoutX="15.0" layoutY="14.0" prefHeight="22.0" prefWidth="918.0" textFill="#c3c3c3">
+                  <Label fx:id="infoLabel" layoutX="42.0" layoutY="82.0" prefHeight="27.0" prefWidth="1197.0" style="-fx-alignment: center;" textFill="#11ff20">
                      <font>
-                        <Font name="Bell MT" size="18.0" />
+                        <Font name="System Bold Italic" size="25.0" />
                      </font>
                   </Label>
-                  <LineChart fx:id="stockGraph" layoutX="19.0" layoutY="161.0" legendSide="TOP" prefHeight="514.0" prefWidth="910.0" stylesheets="@graph-style.css">
-                    <xAxis>
-                      <CategoryAxis label="Month" prefHeight="17.0" prefWidth="759.0" side="BOTTOM" tickLabelFill="#a8a8a8" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis side="LEFT" tickLabelFill="#a8a8a8" />
-                    </yAxis>
-                  </LineChart>
                </children>
             </AnchorPane>
-         </center>
+         </bottom>
       </BorderPane>
    </children>
 </AnchorPane>

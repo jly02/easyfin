@@ -5,6 +5,7 @@ import com.easyfin.constructs.Credentials;
 import com.easyfin.helpers.AccountAPIWrapper;
 import com.easyfin.helpers.ResourceManager;
 
+import com.easyfin.helpers.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,15 +19,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
-import java.net.http.HttpClient;
 import java.net.http.HttpResponse;
 import java.util.ResourceBundle;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.http.HttpRequest;
-import java.net.http.HttpRequest.BodyPublishers;
 
 /**
  * Handles all actions taking place on the account screen,
@@ -36,19 +35,6 @@ public class AccountScreenController implements Initializable {
     @FXML private TextField usernameField;
     @FXML private PasswordField apiField;
     @FXML private Label infoLabel;
-
-    /**
-     * Switch to the main stocks screen.
-     */
-    public void toMainScreen(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("entry-menu.fxml"));
-        Parent root = loader.load();
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 
     /**
      * Tests the inputted credentials against the database.
@@ -96,6 +82,13 @@ public class AccountScreenController implements Initializable {
         );
     }
 
+    /**
+     * Opens the website for registering a username and getting an API key.
+     */
+    public void openLink() throws URISyntaxException, IOException {
+        Desktop.getDesktop().browse(new URI("https://easyfin-api.herokuapp.com/getkey"));
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -105,5 +98,19 @@ public class AccountScreenController implements Initializable {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Switch to the main stocks screen.
+     */
+    public void toMainScreen(ActionEvent event) throws IOException {
+        Scenes.toMainScreen(event);
+    }
+
+    /**
+     * Switch to stock adding screen.
+     */
+    public void toStockScreen(ActionEvent event) throws IOException {
+        Scenes.toStockScreen(event);
     }
 }
