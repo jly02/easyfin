@@ -1,5 +1,6 @@
-package com.easyfin.constructs;
+package com.easyfin.helpers;
 
+import com.easyfin.constructs.ColoredText;
 import javafx.scene.paint.Color;
 
 /**

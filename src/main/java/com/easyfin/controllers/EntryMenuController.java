@@ -4,7 +4,7 @@ import com.easyfin.constructs.ColoredText;
 import com.easyfin.App;
 
 import com.easyfin.constructs.StockEntry;
-import com.easyfin.constructs.TextFactory;
+import com.easyfin.helpers.TextFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

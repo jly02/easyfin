@@ -2,7 +2,8 @@ package com.easyfin.controllers;
 
 import com.easyfin.App;
 import com.easyfin.constructs.Credentials;
-import com.easyfin.constructs.ResourceManager;
+import com.easyfin.helpers.AccountAPIWrapper;
+import com.easyfin.helpers.ResourceManager;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +20,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpResponse;
 import java.util.ResourceBundle;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.http.HttpRequest;
+import java.net.http.HttpRequest.BodyPublishers;
 
 /**
  * Handles all actions taking place on the account screen,
@@ -46,9 +53,29 @@ public class AccountScreenController implements Initializable {
     /**
      * Tests the inputted credentials against the database.
      */
-    public void testValidate() {
-        infoLabel.setText("Successfully Connected!");
-        infoLabel.setTextFill(Color.GREEN);
+    public void testValidate() throws URISyntaxException, IOException, InterruptedException {
+        HttpResponse<String> postResponse = AccountAPIWrapper.validate(usernameField.getText(), apiField.getText());
+
+        switch(postResponse.statusCode()) {
+            case 200:
+                infoLabel.setText("Successfully Connected!");
+                infoLabel.setTextFill(Color.GREEN);
+                break;
+
+            case 401:
+                infoLabel.setText("Unable to authenticate credentials.");
+                infoLabel.setTextFill(Color.RED);
+                break;
+
+            case 404:
+                infoLabel.setText("Username not found.");
+                infoLabel.setTextFill(Color.RED);
+                break;
+
+            default:
+                infoLabel.setText("Unknown error occurred.");
+                infoLabel.setTextFill(Color.RED);
+        }
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.easyfin.constructs;
+package com.easyfin.helpers;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
