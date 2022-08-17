@@ -1,7 +1,8 @@
 package com.easyfin.constructs;
 
+import lombok.Getter;
+
 import javafx.scene.chart.XYChart;
-import javafx.scene.paint.Color;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 import yahoofinance.histquotes.HistoricalQuote;
@@ -17,6 +18,7 @@ import java.util.Calendar;
  * entry in the ListView used for displaying stocks a user
  * owns.
  */
+@Getter
 public class StockEntry {
     // ================================================================================== \\
     // Definitions:                                                                       \\
@@ -63,14 +65,6 @@ public class StockEntry {
             BigDecimal closeVal = hq.getClose();
             data.getData().add(new XYChart.Data<>(label, closeVal));
         }
-    }
-
-    public String getSymbol() {
-        return this.symbol;
-    }
-
-    public XYChart.Series<String, BigDecimal> getData() {
-        return this.data;
     }
 
     /**

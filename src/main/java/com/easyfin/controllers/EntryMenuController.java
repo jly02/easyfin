@@ -2,7 +2,10 @@ package com.easyfin.controllers;
 
 import com.easyfin.constructs.ColoredText;
 
+import com.easyfin.constructs.Credentials;
 import com.easyfin.constructs.StockEntry;
+import com.easyfin.helpers.AccountAPIWrapper;
+import com.easyfin.helpers.ResourceManager;
 import com.easyfin.helpers.Scenes;
 import com.easyfin.helpers.TextFactory;
 import javafx.event.ActionEvent;
@@ -15,6 +18,7 @@ import javafx.scene.control.ListView;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
 
@@ -32,10 +36,24 @@ public class EntryMenuController implements Initializable {
     @SuppressWarnings("unchecked")
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Testing purposes
-        stockList.add(TextFactory.createText("MSFT"));
-        stockList.add(TextFactory.createText("AMZN"));
-        stockList.add(TextFactory.createText("TSLA"));
+        Credentials cred = null;
+        try {
+            cred = (Credentials) ResourceManager.load("src/main/resources/persistent/validation.save");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        assert cred != null;
+        try {
+            AccountAPIWrapper.getStocks(cred.getUsername(), cred.getApiKey())
+                    .forEach(stock -> stockList.add(TextFactory.createText(stock.getSymbol())));
+        } catch (URISyntaxException | IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if(stockList.isEmpty()) {
+            return;
+        }
 
         stocks.getItems().addAll(stockList);
         graphTitle.setText(stockList.get(0).getText());
@@ -63,7 +81,6 @@ public class EntryMenuController implements Initializable {
         try {
             String symbol = stockList.get(0).getText();
             firstStock = new StockEntry(symbol);
-
         } catch (IOException e) {
             e.printStackTrace();
         }

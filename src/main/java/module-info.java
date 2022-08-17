@@ -5,6 +5,7 @@ module com.fin.easyfin {
     requires java.net.http;
     requires com.google.gson;
     requires java.desktop;
+    requires lombok;
 
 
     opens com.easyfin to javafx.fxml;

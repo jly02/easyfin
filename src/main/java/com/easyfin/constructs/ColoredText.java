@@ -1,10 +1,12 @@
 package com.easyfin.constructs;
 
 import javafx.scene.paint.Color;
+import lombok.Getter;
 
 /**
  * Wrapper class for coloring text in a ListView.
  */
+@Getter
 public class ColoredText {
     private final String text ;
     private final Color color ;
@@ -18,13 +20,5 @@ public class ColoredText {
     public ColoredText(String text, Color color) {
         this.text = text ;
         this.color = color ;
-    }
-
-    public String getText() {
-        return text ;
-    }
-
-    public Color getColor() {
-        return color ;
     }
 }
