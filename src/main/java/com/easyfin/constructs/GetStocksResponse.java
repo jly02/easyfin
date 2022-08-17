@@ -4,6 +4,9 @@ import lombok.Getter;
 
 import java.util.List;
 
+/**
+ * JSON wrapper class that holds the stocks related to an account.
+ */
 @Getter
 public class GetStocksResponse {
     private List<Stock> response;

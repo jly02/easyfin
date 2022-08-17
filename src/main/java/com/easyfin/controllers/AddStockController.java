@@ -5,6 +5,9 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
+/**
+ * Handles user adding stocks.
+ */
 public class AddStockController {
     /**
      * Switch to the account screen.

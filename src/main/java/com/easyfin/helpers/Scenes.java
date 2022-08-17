@@ -10,6 +10,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class holds only static methods that facilitate switching
+ * between different scenes in the application.
+ */
 public class Scenes {
     /**
      * Switch to account screen.

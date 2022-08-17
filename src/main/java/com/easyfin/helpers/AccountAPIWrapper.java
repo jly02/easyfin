@@ -1,6 +1,5 @@
 package com.easyfin.helpers;
 
-import com.easyfin.constructs.ColoredText;
 import com.easyfin.constructs.GetStocksResponse;
 import com.google.gson.Gson;
 
