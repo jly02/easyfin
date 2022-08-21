@@ -34,7 +34,7 @@ public class AccountScreenController implements Initializable {
      * Tests the inputted credentials against the database.
      */
     public void testValidate() throws URISyntaxException, IOException, InterruptedException {
-        HttpResponse<String> postResponse = AccountAPIWrapper.validate(usernameField.getText(), apiField.getText());
+        HttpResponse<String> postResponse = AccountAPIWrapper.validate();
 
         switch(postResponse.statusCode()) {
             case 200:

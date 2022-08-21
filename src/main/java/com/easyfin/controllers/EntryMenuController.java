@@ -45,8 +45,7 @@ public class EntryMenuController implements Initializable {
 
         assert cred != null;
         try {
-            AccountAPIWrapper.getStocks(cred.getUsername(), cred.getApiKey())
-                    .forEach(stock -> stockList.add(TextFactory.createText(stock.getSymbol())));
+            AccountAPIWrapper.getStocks().forEach(stock -> stockList.add(TextFactory.createText(stock.getSymbol())));
         } catch (URISyntaxException | IOException | InterruptedException e) {
             e.printStackTrace();
         }

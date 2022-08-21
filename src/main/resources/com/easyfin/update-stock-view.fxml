@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1280.0" style="-fx-background-color: #363636;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.easyfin.controllers.AddStockController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1280.0" style="-fx-background-color: #363636;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.easyfin.controllers.UpdateStockController">
    <children>
       <BorderPane prefHeight="760.0" prefWidth="1280.0">
          <top>
@@ -39,9 +39,15 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="symbolField" layoutX="497.0" layoutY="204.0" prefHeight="50.0" prefWidth="286.0" promptText="Input your stock symbol" />
-                  <TextField fx:id="amountField" layoutX="497.0" layoutY="278.0" prefHeight="50.0" prefWidth="286.0" promptText="Input the amount of this stock you own" />
-                  <Button layoutX="598.0" layoutY="406.0" mnemonicParsing="false" onAction="#toAccountScreen" style="-fx-background-color: #515151;" text="Confirm" textFill="#c3c3c3">
+                  <TextField fx:id="symbolAddField" layoutX="131.0" layoutY="204.0" prefHeight="50.0" prefWidth="286.0" promptText="Stock symbol to add" />
+                  <TextField fx:id="amountField" layoutX="131.0" layoutY="281.0" prefHeight="50.0" prefWidth="286.0" promptText="Amount of this stock you want to add" />
+                  <Button layoutX="247.0" layoutY="393.0" mnemonicParsing="false" onAction="#addStock" style="-fx-background-color: #515151;" text="Add" textFill="#c3c3c3">
+                     <font>
+                        <Font name="Bell MT" size="18.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="symbolRemoveField" layoutX="849.0" layoutY="231.0" prefHeight="50.0" prefWidth="286.0" promptText="Stock symbol to remove" />
+                  <Button layoutX="950.0" layoutY="393.0" mnemonicParsing="false" onAction="#removeStock" style="-fx-background-color: #515151;" text="Remove" textFill="#c3c3c3">
                      <font>
                         <Font name="Bell MT" size="18.0" />
                      </font>
