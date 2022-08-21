@@ -34,9 +34,9 @@ public class AccountScreenController implements Initializable {
      * Tests the inputted credentials against the database.
      */
     public void testValidate() throws URISyntaxException, IOException, InterruptedException {
-        HttpResponse<String> postResponse = AccountAPIWrapper.validate();
+        int status = AccountAPIWrapper.validate();
 
-        switch(postResponse.statusCode()) {
+        switch(status) {
             case 200:
                 infoLabel.setText("Successfully Connected!");
                 infoLabel.setTextFill(Color.GREEN);

@@ -1,5 +1,6 @@
 package com.easyfin.helpers;
 
+import com.easyfin.constructs.AddStockRequestWrapper;
 import com.easyfin.constructs.Credentials;
 import com.easyfin.constructs.GetStocksResponse;
 import com.google.gson.Gson;
@@ -11,7 +12,8 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class AccountAPIWrapper {
     /**
@@ -19,7 +21,7 @@ public class AccountAPIWrapper {
      *
      * @return the response to the POST request
      */
-    public static HttpResponse<String> validate()
+    public static int validate()
             throws IOException, InterruptedException, URISyntaxException {
 
         Pair<String, String> cred = Credentials.getCredentials();
@@ -34,7 +36,9 @@ public class AccountAPIWrapper {
                 .build();
 
         HttpClient httpClient = HttpClient.newHttpClient();
-        return httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> postResponse = httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
+        return postResponse.statusCode();
+
     }
 
     /**
@@ -53,6 +57,7 @@ public class AccountAPIWrapper {
                 .uri(new URI("https://easyfin-api.herokuapp.com/get-stocks/" + username))
                 .header("Content-Type", "application/json")
                 .header("Authorization", apikey)
+                .GET()
                 .build();
 
         HttpClient httpClient = HttpClient.newHttpClient();
@@ -63,7 +68,7 @@ public class AccountAPIWrapper {
             return new ArrayList<>(){};
         }
 
-        // Converting to Stock class format.
+        // Converting to Stock class list format.
         Gson gson = new Gson();
         GetStocksResponse response = gson.fromJson(getResponse.body(), GetStocksResponse.class);
 
@@ -77,20 +82,51 @@ public class AccountAPIWrapper {
      * @param amount the amount desired
      * @return the status code for this request
      */
-    public static int addStock(String symbol, int amount) throws URISyntaxException {
+    public static int addStock(String symbol, int amount)
+            throws URISyntaxException, IOException, InterruptedException {
+
         Pair<String, String> cred = Credentials.getCredentials();
         String username = cred.getKey();
         String apikey = cred.getValue();
 
         Gson gson = new Gson();
+        AddStockRequestWrapper requestBody = new AddStockRequestWrapper(symbol, amount);
 
         HttpRequest postRequest = HttpRequest.newBuilder()
-                .uri(new URI("https://easyfin-api.herokuapp.com/add-stock"))
+                .uri(new URI("https://easyfin-api.herokuapp.com/add-stock/" + username))
                 .header("Content-Type", "application/json")
                 .header("Authorization", apikey)
-                .POST(HttpRequest.BodyPublishers.ofString()
+                .POST(HttpRequest.BodyPublishers.ofString(gson.toJson(requestBody)))
                 .build();
 
         HttpClient httpClient = HttpClient.newHttpClient();
+        HttpResponse<String> getResponse = httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
+        return getResponse.statusCode();
+    }
+
+    /**
+     * Sends a request for the given stock to be removed from an account.
+     *
+     * @param symbol the stock symbol
+     * @return the status code for this request
+     */
+    public static int removeStock(String symbol)
+            throws URISyntaxException, IOException, InterruptedException {
+
+        Pair<String, String> cred = Credentials.getCredentials();
+        String username = cred.getKey();
+        String apikey = cred.getValue();
+
+        HttpRequest deleteRequest = HttpRequest.newBuilder()
+                .uri(new URI("https://easyfin-api.herokuapp.com/remove-stock/" + username))
+                .header("Content-Type", "application/json")
+                .header("Authorization", apikey)
+                .header("Symbol", symbol)
+                .DELETE()
+                .build();
+
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpResponse<String> deleteResponse = httpClient.send(deleteRequest, HttpResponse.BodyHandlers.ofString());
+        return deleteResponse.statusCode();
     }
 }
