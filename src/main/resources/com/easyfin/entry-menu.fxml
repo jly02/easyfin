@@ -45,11 +45,6 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="graphTitle" layoutX="15.0" layoutY="14.0" prefHeight="22.0" prefWidth="918.0" textFill="#c3c3c3">
-                     <font>
-                        <Font name="Bell MT" size="18.0" />
-                     </font>
-                  </Label>
                   <LineChart fx:id="stockGraph" layoutX="19.0" layoutY="161.0" legendSide="TOP" prefHeight="514.0" prefWidth="910.0" stylesheets="@graph-style.css">
                     <xAxis>
                       <CategoryAxis label="Month" prefHeight="17.0" prefWidth="759.0" side="BOTTOM" tickLabelFill="#a8a8a8" />
@@ -58,6 +53,11 @@
                       <NumberAxis side="LEFT" tickLabelFill="#a8a8a8" />
                     </yAxis>
                   </LineChart>
+                  <Label fx:id="graphTitle" layoutX="15.0" layoutY="14.0" prefHeight="22.0" prefWidth="918.0" textFill="#c3c3c3">
+                     <font>
+                        <Font name="Bell MT" size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </center>

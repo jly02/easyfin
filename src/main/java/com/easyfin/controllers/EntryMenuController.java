@@ -45,7 +45,10 @@ public class EntryMenuController implements Initializable {
 
         assert cred != null;
         try {
-            AccountAPIWrapper.getStocks().forEach(stock -> stockList.add(TextFactory.createText(stock.getSymbol())));
+            // allowing things to be colored
+            AccountAPIWrapper.getStocks().forEach(stock -> {
+                stockList.add(TextFactory.createText(stock.getSymbol()));
+            });
         } catch (URISyntaxException | IOException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -57,7 +60,7 @@ public class EntryMenuController implements Initializable {
         stocks.getItems().addAll(stockList);
         graphTitle.setText(stockList.get(0).getText());
 
-        // Set colors for ListView on the side
+        // Set colors for ListView on the left
         stocks.setCellFactory(lv -> new ListCell<>() {
             @Override
             protected void updateItem(ColoredText item, boolean empty) {
